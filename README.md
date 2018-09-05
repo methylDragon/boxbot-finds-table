@@ -11,8 +11,6 @@ ROS, Gazebo and C++ practice. Guide a Boxbot to find it's table! Boxbots love th
 4. Source the devel/setup.bash
 5. Run `rospack profile`
 
-
-
 Then run the following:
 
 ```shell
@@ -21,6 +19,12 @@ $ roslaunch boxbot_gazebo boxbot_world.launch
 
 # If the navigation node crashes, run in Terminal 2
 $ rosrun boxbot_finds_table table_finder
+```
+
+You may also use the `boxbot.rviz` configuration file to visualise the transforms!
+
+```shell
+$ rviz -d boxbot.rviz
 ```
 
 
