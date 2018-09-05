@@ -1,0 +1,33 @@
+<launch>
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <arg name="world_name" default="$(find boxbot_gazebo)/worlds/sky.world" />
+
+  <!-- Send object URDFs to param server -->
+  <param name="table_description" command="$(find xacro)/xacro $(find boxbot_gazebo)/objects/table.urdf.xacro" />
+  <param name="boxbot_description" command="$(find xacro)/xacro $(find boxbot_description)/urdf/boxbot.urdf.xacro" />
+
+  <!-- Launch Gazebo with the specified world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="world_name" value="$(arg world_name)" />
+  </include>
+
+  <!-- Spawn Table -->
+  <node name="table_spawner" pkg="gazebo_ros" type="spawn_model"
+	      args="-urdf -model table_model -param table_description -x 3 -y 0 -z 0.01"
+              respawn="false" output="screen" />
+
+  <!-- Spawn boxbot -->
+  <node name="boxbot_spawner" pkg="gazebo_ros" type="spawn_model"
+	      args="-urdf -model boxbot_model -param boxbot_description -x 0 -y 0 -z 0.01"
+              respawn="false" output="screen" />
+
+  <include file="$(find boxbot_description)/launch/description.launch"></include>
+
+  <node name="table_finder" pkg="boxbot_finds_table" type="table_finder" output="screen" />
+</launch>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>boxbot_description</name>
+  <version>0.0.0</version>
+  <description>URDF description for the boxbot, a holonomic box shaped robot for practice!</description>
+
+  <maintainer email="methyldragon@gmail.com">methylDragon</maintainer>
+  <author>methylDragon</author>
+
+  <license>BSD</license>
+
+  <url type="website">http://github.com/methyldragon</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+
+  <export>
+    <gazebo_ros gazebo_media_path="${prefix}"/>
+  </export>
+</package>
