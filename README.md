@@ -1,7 +1,7 @@
 # boxbot_finds_table
 ROS, Gazebo and C++ practice. Guide a Boxbot to find it's table! Boxbots love their tables!
 
-
+[![Click to watch video!](assets/youtube_thumbnail.png)](https://youtu.be/bZ0u1Xh0dfA)
 
 ### Steps:
 
